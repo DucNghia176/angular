@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Todo App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script src="main.js" defer></script>
+</head>
+
+<body class="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 flex justify-center items-center min-h-screen">
+    <div class="flex flex-col p-6 bg-white rounded-lg shadow-lg w-full max-w-md gap-2">
+        <h1 class="font-bold text-2xl mb-4">Todo App</h1>
+
+        <!-- thêm -->
+        <div class="flex gap-2">
+            <input class="flex-1 border border-gray-300 p-2 rounded" type="text" id="input"
+                placeholder="Add your new todo">
+            <button
+                class="px-4 py-2 border border-gray-300 text-2xl p-2 bg-violet-500 text-white justify-center items-center rounded"
+                id="add">+</button>
+        </div>
+
+        <!-- search -->
+        <div class="flex gap-2 mt-2">
+            <input class="flex-1 border border-gray-300 p-2 rounded" type="text" id="search"
+                placeholder="Search todo...">
+        </div>
+
+        <div class="overflow-y-auto max-h-64">
+            <ul id="list" class="space-y-2"></ul>
+        </div>
+
+
+        <div class="flex justify-between items-center mt-4">
+            <span id="count">You have 0 pending task(s)</span>
+            <button id="clear"
+                class="border border-gray-300 p-2 bg-gray-100 hover:bg-violet-600 rounded bg-violet-500 text-white">
+                Clear All
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
