@@ -4,6 +4,8 @@ const addButton = document.getElementById('add');
 const clearButton = document.getElementById('clear');
 const countSpan = document.getElementById('count');
 const searchInput = document.getElementById('search');
+const messageBox = document.getElementById('message');
+
 
 const todos = ['gaming', 'coding', 'reading'];
 
@@ -14,7 +16,7 @@ function renderTodos(data) {
     if (data.length === 0) {
         const li = document.createElement("li");
         li.className = "text-center text-gray-500 italic";
-        li.textContent = "Không có kết quả";
+        li.textContent = "Chưa có dữ liệu";
         list.appendChild(li);
         updateCount();
         return;
@@ -47,16 +49,33 @@ function renderTodos(data) {
 addButton.addEventListener('click', () => {
     const text = input.value.trim();
     if (todos.includes(text)) {
-        alert("Todo đã tồn tại!");
+        showMessage("Todo đã tồn tại!", "error");
         input.value = "";
         return;
     }
     if (text !== "") {
         todos.push(text);
         input.value = "";
+        // showMessage("Thêm thành công!", "success");
         renderTodos(todos);
     }
 });
+
+function showMessage(text, type = "error") {
+    messageBox.textContent = text;
+    messageBox.className = "min-h-[20px] text-sm";
+    if (type === "error") {
+        messageBox.className = "text-red-500  text-sm";
+    } else if (type === "success") {
+        messageBox.className = "text-green-500  text-sm";
+    }
+
+    // Tự động ẩn sau 3 giây
+    setTimeout(() => {
+        messageBox.textContent = "";
+        messageBox.className = "";
+    }, 3000);
+}
 
 // --- Xóa tất cả ---
 clearButton.addEventListener('click', () => {
